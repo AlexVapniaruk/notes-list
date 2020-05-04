@@ -36,6 +36,7 @@ class NoteEdit extends React.Component {
 
   onSubmit = (formValues) => {
     this.props.editNote(this.id, formValues);
+    this.props.history.push('/')
   }
 
   render() {
@@ -65,7 +66,7 @@ const validate = (formValues) => {
 
   return errors;
 };
-
+//TODO move form to separate file use in NoteAdd and NoteEdit
 const formWrapped = reduxForm({
   form: 'noteEdit',
   enableReinitialize: true,

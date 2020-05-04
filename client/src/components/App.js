@@ -5,10 +5,11 @@ import NoteEdit from './Note/NoteEdit';
 import NoteView from './Note/NoteView';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './Header';
+import './App.scss';
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <BrowserRouter>
         <Header />
         <Switch>

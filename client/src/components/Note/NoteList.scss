@@ -1,0 +1,36 @@
+.note-list {
+  &__item {
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin: 5px 0;
+    
+    &-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-text {
+      padding: 5px 0;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    padding: 5px 0;
+    font-size: 16px;
+  }
+
+  &__controls {
+    display: flex;
+
+    &-item {
+      padding: 0 5px;
+      
+      &-link {
+        color: #333;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
