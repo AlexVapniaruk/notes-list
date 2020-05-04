@@ -25,7 +25,7 @@ return function (App $app) {
     $app->group('/notes', function(Group $group) {
         $group->get('', ListNotesAction::class);
         $group->post('', CreateNoteAction::class);
-        //$group->get('/{id}', ViewNoteAction::class);
+        $group->get('/{id}', ViewNoteAction::class);
         //$group->put('/{id}', CreateUsersAction::class);
         //$group->delete('/{id}', ListUsersAction::class);
 

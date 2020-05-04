@@ -48,11 +48,12 @@ class InMemoryNoteRepository implements NoteRepository
     public function findNoteOfId(int $id): Note
     {
         $note = $this->connection->table('notes')->find($id);
+
         if (!isset($note)) {
             throw new NoteNotFoundException();
         }
 
-        return $note;
+        return new Note($note->id, $note->title, $note->text, $note->date);
     }
 
     public function createNote($data)

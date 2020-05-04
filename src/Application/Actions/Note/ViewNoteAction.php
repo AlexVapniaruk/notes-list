@@ -12,11 +12,9 @@ class ViewNoteAction extends NoteAction
      */
     protected function action(): Response
     {
-        $userId = (int) $this->resolveArg('id');
-        $user = $this->noteRepository->findNoteOfId($userId);
+        $noteId = (int) $this->resolveArg('id');
+        $note = $this->noteRepository->findNoteOfId($noteId);
 
-        $this->logger->info("Note of id `${userId}` was viewed.");
-
-        return $this->respondWithData($user);
+        return $this->respondWithData($note);
     }
 }
