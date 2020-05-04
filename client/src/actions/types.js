@@ -1,0 +1,4 @@
+const FETCH_NOTES = 'FETCH_NOTES';
+const CREATE_NOTE = 'CREATE_NOTE';
+
+export { FETCH_NOTES, CREATE_NOTE };

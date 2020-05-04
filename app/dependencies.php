@@ -7,6 +7,9 @@ use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
+use Illuminate\Container\Container as IlluminateContainer;
+use Illuminate\Database\Connection;
+use Illuminate\Database\Connectors\ConnectionFactory;
 
 return function (ContainerBuilder $containerBuilder) {
     $containerBuilder->addDefinitions([
@@ -25,4 +28,24 @@ return function (ContainerBuilder $containerBuilder) {
             return $logger;
         },
     ]);
+
+    $containerBuilder->addDefinitions([
+        Connection::class => function (ContainerInterface $containerBuilder) {
+            $factory = new ConnectionFactory(new IlluminateContainer());
+
+            $connection = $factory->make($containerBuilder->get('settings')['db']);
+
+            $connection->disableQueryLog();
+
+            return $connection;
+        }
+    ]);
+
+    $containerBuilder->addDefinitions([
+        PDO::class => function (ContainerInterface $containerBuilder) {
+            return $containerBuilder->get(Connection::class)->getPdo();
+        },
+    ]);
+
+
 };
