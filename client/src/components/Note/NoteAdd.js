@@ -26,8 +26,10 @@ class NoteAdd extends React.Component {
   }
 
   onSubmit = (formValues) => {
-    this.props.createNote(formValues);
-    this.props.history.push('/');
+    this.props.createNote(formValues)
+      .then(() => {
+        this.props.history.push('/');
+      });
   }
 
   render() {

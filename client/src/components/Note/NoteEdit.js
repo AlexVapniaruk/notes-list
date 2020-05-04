@@ -35,8 +35,10 @@ class NoteEdit extends React.Component {
   }
 
   onSubmit = (formValues) => {
-    this.props.editNote(this.id, formValues);
-    this.props.history.push('/')
+    this.props.editNote(this.id, formValues)
+      .then(() => {
+        this.props.history.push('/');
+      });
   }
 
   render() {
