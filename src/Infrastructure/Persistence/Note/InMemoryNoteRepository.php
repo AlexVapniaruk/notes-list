@@ -66,4 +66,24 @@ class InMemoryNoteRepository implements NoteRepository
         return false;
         //TODO Create Throw error
     }
+
+    public function deleteNote(int $id)
+    {
+        return $this->connection->table('notes')->delete($id);
+        //TODO Delete Throw error
+    }
+
+    public function editNote($id, $data)
+    {
+        $data = (array) json_decode($data);
+        $status = $this->connection->table('notes')
+            ->where([ 'id' => $id ])
+            ->update([ 'title' => $data['title'], 'text' => $data['text']]);
+
+        if ($status) {
+            return true;
+        }
+        return false;
+        //TODO Edit Throw error
+    }
 }

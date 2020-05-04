@@ -1,8 +1,9 @@
 import React from 'react';
 import NoteList from './Note/NoteList';
 import NoteAdd from './Note/NoteAdd';
+import NoteEdit from './Note/NoteEdit';
 import NoteView from './Note/NoteView';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './Header';
 
 const App = () => {
@@ -10,11 +11,12 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Header />
-        <div>
+        <Switch>
           <Route path="/" exact component={NoteList} />
           <Route path="/add" exact component={NoteAdd} />
+          <Route path="/edit/:id" exact component={NoteEdit} />
           <Route path="/:id" exact component={NoteView} />
-        </div>
+        </Switch>
       </BrowserRouter>
     </div>
   );

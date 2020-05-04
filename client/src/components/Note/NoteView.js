@@ -8,6 +8,7 @@ class NoteView extends React.Component {
     if(id) {
       this.props.fetchSingleNote(id);
     }
+    //TODO if id not exits return non found page/component
   }
 
   render() {
